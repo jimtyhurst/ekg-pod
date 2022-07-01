@@ -1,0 +1,5 @@
+# Ports to expose on workspace startup
+ports:
+  - port: 8000
+    onOpen: open-preview
+
