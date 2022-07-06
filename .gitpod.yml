@@ -1,5 +1,12 @@
-# Ports to expose on workspace startup
-ports:
-  - port: 8000
-    onOpen: open-preview
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 
+tasks:
+  - init: pyenv install 3.9.13 && pyenv local 3.9.13
+    command: echo 'start script is empty ...'
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - name: Airflow web ui
+    description: Access to Airflow's web UI
+    port: 8000
+    onOpen: open-preview
