@@ -27,11 +27,17 @@ with DAG(
         op_kwargs={NAME_KEY: 'Nadeesh'}
     )
 
+    # No kwargs
+    t2 = PythonOperator(
+        task_id="conversational_python",
+        python_callable=greet
+    )
+
     t3 = PythonOperator(
         task_id="goodbye_python",
         python_callable=greet,
         op_kwargs={GREETING_KEY: 'Goodbye', NAME_KEY: 'Nadeesh'}
     )
 
-    t1 >> t3
+    t1 >> t2 >> t3
 
