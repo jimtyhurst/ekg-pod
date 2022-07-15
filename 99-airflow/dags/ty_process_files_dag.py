@@ -7,7 +7,8 @@ import requests
 
 
 def download_file():
-    indata = requests.get('https://raw.githubusercontent.com/tadinve/EKG-Foundations/master/04A-postgress/create_world.sql')
+    indata = requests.get(
+        'https://raw.githubusercontent.com/tadinve/EKG-Foundations/master/04A-postgress/create_world.sql')
     with open('/opt/airflow/dags/files/create_world.sql', 'w') as outfile:
         outfile.write(indata.text)
 
@@ -35,7 +36,8 @@ with DAG(
 
     upload_file_to_postgres = EmptyOperator(task_id='upload_file_to_postgres')
 
-    move_file_to_processed_folder = EmptyOperator(task_id='move_file_to_processed_folder')
+    move_file_to_processed_folder = EmptyOperator(
+        task_id='move_file_to_processed_folder')
 
     end_dag = EmptyOperator(task_id='end_dag')
 
